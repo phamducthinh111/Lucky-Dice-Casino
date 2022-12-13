@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lucky Dice Casino</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- class CSS để dùng trong bài -->
+    <style>
+        .picture-cover { 
+            background-image: url("images/cover.jpg");
+            min-height: 100px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid  picture-cover">
+        
+    </div>
+    <div class="container ">
+        <div class="row ">
+            <div class="col-5 bg-white  ">
+                <div class="row  form-group">
+                    <div class="col-12"> <!-- Tại dòng 2.1.1.1 thêm một div column rộng 12 đơn vị -->
+                        <h4>Nhập thông tin của bạn</h4>
+                    </div>
+                </div>
+                <div class="row form-group"> <!-- tại mỗi dòng 2.1.1.2 thêm 2 div column có chiều rộng lần lượt là 4, 8 đơn vị -->
+                    <div class="col-4"> <!-- chiều rộng 4 đơn vị (col-4) -->
+                        <label>Username</label>
+                    </div>
+                    <div class="col-8"> <!-- chiều rộng 8 đơn vị (col-8) -->
+                        <input id="inp-user-name" class="form-control" type="text">
+                        <div class="invalid-feedback feedback-icon text-left">Chưa nhập User Name.
+                            <i class="fa fa-times"></i>
+                        </div>
+                        <div class="valid-feedback feedback-icon">
+                            <i class="fa fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"> <!-- tại mỗi dòng 2.1.1.3 thêm 2 div column có chiều rộng lần lượt là 4, 8 đơn vị -->
+                    <div class="col-4">  <!-- chiều rộng 4 đơn vị (col-4) -->
+                        <label>Firstname</label>
+                    </div>
+                    <div class="col-8">  <!-- chiều rộng 8 đơn vị (col-8) -->
+                        <input id="inp-first-name" class="form-control" type="text">
+                        <div class="invalid-feedback feedback-icon text-left">Chưa nhập First Name.
+                            <i class="fa fa-times"></i>
+                        </div>
+                        <div class="valid-feedback feedback-icon">
+                            <i class="fa fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"><!-- tại mỗi dòng 2.1.1.4 thêm 2 div column có chiều rộng lần lượt là 4, 8 đơn vị -->
+                    <div class="col-4">  <!-- chiều rộng 4 đơn vị (col-4) -->
+                        <label>Lastname</label>
+                    </div>
+                    <div class="col-8"> <!-- chiều rộng 8 đơn vị (col-8) -->
+                        <input id="inp-last-name" class="form-control" type="text">
+                        <div class="invalid-feedback feedback-icon text-left">Chưa nhập Last Name.
+                            <i class="fa fa-times"></i>
+                        </div>
+                        <div class="valid-feedback feedback-icon">
+                            <i class="fa fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4  text-center"> <!-- Tại cột 2.1.2 tạo 3 div class row, cột 2.1.2 có thuộc tính căn giữa -->
+               <div class="row form-group">
+                    <div class="col-12   "> <!-- trong mỗi row chứa 1 cột rộng 12 đơn vị -->
+                        <input id="btn-dice" class="btn btn-success button-width w-75" value="Ném" type="button">
+                    </div>
+               </div>
+               <div class="row form-group">
+                    <div class="col-12   "> <!-- trong mỗi row chứa 1 cột rộng 12 đơn vị-->
+                        <img id="img-dice" class="img-thumbnail" src="images/dice.png">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-12   "> <!-- trong mỗi row chứa 1 cột rộng 12 đơn vị -->
+                        <p id="p-notification-dice">Chúc mừng</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3  text-center"> <!-- Tại cột 2.1.3 tạo 2 div class row, cột 2.1.3 có thuộc tính căn giữa -->
+                <div class="row form-group">
+                    <div class="col-12   "> <!-- trong mỗi row chứa 1 cột rộng 12 đơn vị -->
+                        <p>Voucher</p>
+                        <p id="p-voucher-id">No ID</p>
+                        <p id="p-voucher-percent">0%</p>
+                    </div>
+               </div>
+               <div class="row form-group">
+                    <div class="col-12   "> <!-- trong mỗi row chứa 1 cột rộng 12 đơn vị-->
+                        <img id="img-present" class="img-thumbnail" src="images/no-present.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row  text-center form-group"> <!-- Tại row 2.2 thêm một div column rộng 12 đơn vị  -->
+            <div class="col-12">
+                <button id="btn-dice-history" class="btn btn-success button-width w-25" disabled>Dice History</button>
+                <button id="btn-voucher-history" class="btn btn-success button-width w-25" disabled>Voucher History</button>
+                <button id="btn-present-history" class="btn btn-success button-width w-25" disabled>Present History</button>
+            </div>
+        </div>
+        <div class="row "> <!-- Tại row 2.3 thêm một div column rộng 12 đơn vị  -->
+            <div class="col-12">
+                <table id="history-placeholder-table" class="table table-striped table-hover ">
+                    <tr>
+                        <th>Lượt</th>
+                        <th>Dice</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>4</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    "use strict";
+    /*** REGION 1 - Global variables - Vùng khai báo biến, hằng số, tham số TOÀN CỤC */
+    const gBASE_URL = "/devcamp-lucky-dice";
+
+    /*** REGION 2 - Vùng gán / thực thi sự kiện cho các elements */
+    $(document).ready(function() {
+        //gán sự kiện onclick cho nút Ném
+        $("#btn-dice").click(function() {
+            onBtnNewDiceClick();
+        });        
+    });
+    /*** REGION 3 - Event handlers - Vùng khai báo các hàm xử lý sự kiện */
+    //hàm thực thi khi nút Ném - được click
+    function onBtnNewDiceClick() {
+        // B0: khởi tạo đối tượng chứa dữ liệu dùng trong hàm
+        var vPlayerObject = {
+            username: "",
+            firstname: "",
+            lastname: ""
+        };
+        // B1: thu thập dữ liệu
+        getDataOnForm(vPlayerObject)
+        // B2: kiểm tra dữ liệu
+        var vIsValid = checkDataInput(vPlayerObject);
+        if (vIsValid) {     
+            // B3: call API tạo 1 lượt Dice 
+            callAPICreateNewDice(vPlayerObject)
+        }
+    }
+
+    /*** REGION 4 - Common funtions - Vùng khai báo hàm dùng chung trong toàn bộ chương trình*/
+    //Hàm thu thập dữ liệu
+    function getDataOnForm(paramObjPlayer) {
+        "use strict";
+        paramObjPlayer.username = $("#inp-user-name").val().trim();
+        paramObjPlayer.firstname = $("#inp-first-name").val().trim();
+        paramObjPlayer.lastname = $("#inp-last-name").val().trim();
+    }
+
+    //Hàm kiểm tra dữ liệu input
+    function checkDataInput(paramObjPlayer) {
+        "use strict";
+        if (paramObjPlayer.username == "") {
+            $("#inp-user-name").addClass( "is-invalid" ).removeClass( "is-valid" );
+            alert ("Username, bạn chưa nhập!");
+            return false;
+        }
+        $("#inp-user-name").addClass( "is-valid" ).removeClass( "is-invalid" );
+        if (paramObjPlayer.firstname == "") {
+            $("#inp-first-name").addClass( "is-invalid" ).removeClass( "is-valid" );
+            alert ("Firstname, bạn chưa nhập!");
+            return false;
+        }
+        $("#inp-first-name").addClass( "is-valid" ).removeClass( "is-invalid" );
+        if (paramObjPlayer.lastname == "") {
+            $("#inp-last-name").addClass( "is-invalid" ).removeClass( "is-valid" );
+            alert ("Lastname, bạn chưa nhập!");
+            return false;
+        }
+        $("#inp-last-name").addClass( "is-valid" ).removeClass( "is-invalid" );    
+        return true;
+    }
+    
+    // AJAX: call API tạo 1 lượt Dice
+    function callAPICreateNewDice( paramObjPlayer ) {
+        "use strict";
+        var vRequestData = JSON.stringify(paramObjPlayer);
+        var vBASE_URL = gBASE_URL + "/dice"; 
+        $.ajax({
+            url:  vBASE_URL,
+            dataType: "json",
+            type: 'POST',
+            contentType: 'application/json',
+            data : vRequestData, 
+            success: displaySuccess,
+            error: displayError
+        });  
+    }
+    // hàm xử lý kết quả trả về thành công
+    function displaySuccess (paramResSuccess) {
+        console.log(paramResSuccess);
+        console.log( Object.entries(paramResSuccess) );
+        displayNewDice( paramResSuccess );
+    }
+    // hàm xử lý kết quả trả về lỗi
+    function displayError (paramResError) {
+        alert(paramResError.responseText);
+    }
+
+    // Hàm hiển thị các kết quả 1 lượt chơi (New Dice : Message, Voucher Id, Discount percent, Prize,..)
+    function displayNewDice(paramResponse) {    
+        //parsing to object
+        //var vResponse = JSON.parse(paramXHR.responseText);    
+        //get result dice
+        var vDiceReady = paramResponse.dice;
+        console.log("dice result:= " + vDiceReady);
+        //tìm các thẻ    
+        var vImageTag = $("#img-dice");
+        var vPMessageTag = $("#p-notification-dice");
+        var vPVoucherIdTag = $("#p-voucher-id");
+        var vPDiscountPercentTag = $("#p-voucher-percent");
+        var vImagePrizeTag = $("#img-present");
+        // Subtask 5: Hiển thị ảnh Dice mới và lời nhắn
+        switch (vDiceReady) {   
+        case 1:
+            vImageTag.attr("src", "images/1.png"); //đổi ảnh xúc xắc
+            vPMessageTag.html("Chúc bạn may mắn lần sau!"); //thông báo kết quả
+            break;
+        case 2:
+            vImageTag.attr("src", "images/2.png"); //đổi ảnh xúc xắc
+            vPMessageTag.html("Chúc bạn may mắn lần sau!"); //thông báo kết quả
+            break;
+        case 3:
+            vImageTag.attr("src", "images/3.png");//đổi ảnh xúc xắc
+            vPMessageTag.html("Chúc bạn may mắn hơn nữa!"); //thông báo kết quả
+            break;
+        case 4:
+            vImageTag.attr("src", "images/4.png");
+            vPMessageTag.html("Chúc mừng. Bạn đang may mắn!"); //thông báo kết quả
+            break;
+        case 5:
+            vImageTag.attr("src", "images/5.png");
+            vPMessageTag.html("Chúc mừng. Vận may đã đến!"); //thông báo kết quả
+            break;
+        case 6:
+            vImageTag.attr("src", "images/6.png");
+            vPMessageTag.html("Tuyệt vời. Bạn thật là may mắn!"); //thông báo kết quả
+        }
+        // Subtask 6: Hiển thị Voucher (nếu có)
+        var vVoucherObj = paramResponse.voucher;     
+        if (vVoucherObj != null) {
+            vPVoucherIdTag.html(vVoucherObj.code);
+            vPDiscountPercentTag.html(vVoucherObj.discount + "%");
+        } else {
+            vPVoucherIdTag.html("No ID");
+            vPDiscountPercentTag.html("0%");
+        }
+        // Subtask 7: Hiển thị ảnh phần thưởng prize (nếu có)
+        var vPrize = paramResponse.prize;
+        if (vPrize == null) {
+            vImagePrizeTag.attr("src", "images/no-present.jpg");
+        } else {
+            if (vPrize.name == "Mũ") {
+                vImagePrizeTag.attr("src", "images/hat.jpg");
+            } 
+            if (vPrize.name == "Bút") {
+                vImagePrizeTag.attr("src", "images/pen.jpg");
+            }
+            if (vPrize.name == "Áo mưa") {
+                vImagePrizeTag.attr("src", "images/ao-mua.jpg");
+            }
+            if (vPrize.name == "Xe máy") {
+                vImagePrizeTag.attr("src", "images/xe-may.jpg");
+            }
+            if (vPrize.name == "Sổ") {
+                vImagePrizeTag.attr("src", "images/book.jpg");
+            }
+        } 
+    }
+</script>
+
+</html>
